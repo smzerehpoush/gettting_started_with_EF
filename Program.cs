@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFGetStarted
 {
@@ -30,8 +31,8 @@ namespace EFGetStarted
                 // db.Remove(blog);
                 // db.SaveChanges();
                 // Console.WriteLine("blog removed successfully");
-                
-                db.
+                var otherBLogs = db.Blogs.FromSqlRaw("SELECT * FROM Blogs").ToList<BlogModel>();
+                Console.WriteLine($"other blogs {otherBLogs}");
             }
         }
     }
